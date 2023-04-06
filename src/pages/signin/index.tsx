@@ -1,10 +1,6 @@
 import { FormEvent, useState } from 'react'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { FirebaseError } from '@firebase/util'
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  sendEmailVerification,
-} from 'firebase/auth'
 import {
   Box,
   Button,
@@ -31,19 +27,15 @@ const Page = () => {
     e.preventDefault()
     try {
       const auth = getAuth()
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      await sendEmailVerification(userCredential.user)
+      await signInWithEmailAndPassword(auth, email, password)
       setEmail('')
       setPassword('')
       toast({
-        title: '確認メールを送信しました。',
+        title: 'ログインしました。',
         status: 'success',
         position: 'top',
       })
+      // TODO: ログイン後のページに遷移の処理を書く
     } catch (e) {
       toast({
         title: 'エラーが発生しました。',
@@ -60,7 +52,7 @@ const Page = () => {
 
   return (
     <Container py={14}>
-      <Heading>サインアップ</Heading>
+      <Heading>サインイン</Heading>
       <chakra.form onSubmit={handleSubmit}>
         <Spacer height={8} aria-hidden />
         <Grid gap={4}>
@@ -80,17 +72,15 @@ const Page = () => {
                 type={'password'}
                 name={'password'}
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                }}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </FormControl>
           </Box>
         </Grid>
-        <Spacer height={8} aria-hidden />
+        <Spacer height={4} aria-hidden />
         <Center>
           <Button type={'submit'} isLoading={isLoading}>
-            アカウントを作成
+            ログイン
           </Button>
         </Center>
       </chakra.form>
