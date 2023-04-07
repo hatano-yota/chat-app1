@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth'
 
 export type GlobalAuthState = {
@@ -30,3 +36,5 @@ export const AuthProvider = ({ children }: Props) => {
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
 }
+
+export const useAuthContext = () => useContext(AuthContext)
