@@ -3,6 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { initializeFirebaseApp } from '@src/lib/firebase/firebase'
 import { AuthProvider } from '@src/feature/auth/provider/AuthProvider'
 import { Header } from '@src/components/Header'
+import { Footer } from '@src/components/Footer'
 
 initializeFirebaseApp()
 export default function App({ Component, pageProps }: AppProps) {
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Header />
         <Component {...pageProps} />
+        <Footer />
       </AuthProvider>
     </ChakraProvider>
   )
