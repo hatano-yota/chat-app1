@@ -7,16 +7,16 @@ export const Footer = () => {
       <Container maxW={'container.lg'}>
         <Flex flexDirection={'column'} gap={2} alignItems={'start'}>
           <Navigate href={(path) => path.$url()}>
-            <Link lineHeight={1}>トップページ</Link>
+            <chakra.p lineHeight={1}>トップページ</chakra.p>
           </Navigate>
           <Navigate href={(path) => path.signin.$url()}>
-            <Link lineHeight={1}>サインイン</Link>
+            <chakra.p lineHeight={1}>サインイン</chakra.p>
           </Navigate>
           <Navigate href={(path) => path.signup.$url()}>
-            <Link lineHeight={1}>サインアップ</Link>
+            <chakra.p lineHeight={1}>サインアップ</chakra.p>
           </Navigate>
           <Navigate href={(path) => path.chat.$url()}>
-            <Link lineHeight={1}>チャット</Link>
+            <chakra.p lineHeight={1}>チャット</chakra.p>
           </Navigate>
         </Flex>
       </Container>
