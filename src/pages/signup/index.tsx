@@ -19,12 +19,14 @@ import {
   chakra,
   useToast,
 } from '@chakra-ui/react'
+import { useRouter } from '@src/hooks/useRouter'
 
 const Page = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const toast = useToast()
+  const { push } = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setIsLoading(true)
@@ -44,6 +46,7 @@ const Page = () => {
         status: 'success',
         position: 'top',
       })
+      push((path) => path.chat.$url())
     } catch (e) {
       toast({
         title: 'エラーが発生しました。',
