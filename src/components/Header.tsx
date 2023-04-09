@@ -1,7 +1,8 @@
-import { useRouter } from 'next/router'
 import { FirebaseError } from 'firebase/app'
 import { getAuth, signOut } from 'firebase/auth'
 import { useAuthContext } from '@src/feature/auth/provider/AuthProvider'
+import { Navigate } from '@src/components/Navigate'
+import { useRouter } from '@src/hooks/useRouter'
 import {
   Avatar,
   Button,
@@ -16,7 +17,6 @@ import {
   chakra,
   useToast,
 } from '@chakra-ui/react'
-import Link from 'next/link'
 
 export const Header = () => {
   const { user } = useAuthContext()
@@ -32,7 +32,7 @@ export const Header = () => {
         status: 'success',
         position: 'top',
       })
-      push('/signin')
+      push((path) => path.signin.$url())
     } catch (e) {
       if (e instanceof FirebaseError) {
         console.log(e)
@@ -44,11 +44,11 @@ export const Header = () => {
     <chakra.header py={4} bgColor={'blue.500'}>
       <Container maxW={'container.lg'}>
         <Flex>
-          <Link href={'/'} passHref>
-            <chakra.a _hover={{ opacity: 0.8 }}>
-              <Heading color={'white'}>Firebase Realtime Chat</Heading>
-            </chakra.a>
-          </Link>
+          <Navigate href={(path) => path.$url()}>
+            <Heading color={'white'} _hover={{ opacity: 0.8 }}>
+              Firebase Realtime Chat
+            </Heading>
+          </Navigate>
           <Spacer aria-hidden />
           {user ? (
             <Menu>
@@ -60,11 +60,11 @@ export const Header = () => {
               </MenuList>
             </Menu>
           ) : (
-            <Link href={'/signin'} passHref>
-              <Button colorScheme={'teal'} as={'a'}>
+            <Navigate href={(path) => path.signin.$url()}>
+              <Button colorScheme={'teal'}>
                 サインイン
               </Button>
-            </Link>
+            </Navigate>
           )}
         </Flex>
       </Container>
