@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { useAuthContext } from '../provider/AuthProvider'
 import { useRouter } from '@src/hooks/useRouter'
 import { Box } from '@chakra-ui/react'

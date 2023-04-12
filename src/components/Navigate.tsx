@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { UrlObject } from 'url'
 import { pagesPath, PagesPath } from '@src/lib/pathpida/$path'
 import Link from 'next/link'

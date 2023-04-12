@@ -1,10 +1,5 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import type { ReactNode } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth'
 
 export type GlobalAuthState = {
