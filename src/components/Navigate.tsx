@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { UrlObject } from 'url'
-import { pagesPath, PagesPath } from '@src/lib/pathpida/$path'
+import type { PagesPath } from '@src/lib/pathpida/$path'
+import { pagesPath } from '@src/lib/pathpida/$path'
 import Link from 'next/link'
 
 type Props = {

@@ -61,9 +61,7 @@ export const Header = () => {
             </Menu>
           ) : (
             <Navigate href={(path) => path.signin.$url()}>
-              <Button colorScheme={'teal'}>
-                サインイン
-              </Button>
+              <Button colorScheme={'teal'}>サインイン</Button>
             </Navigate>
           )}
         </Flex>
