@@ -1,4 +1,4 @@
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import { chakra, ChakraProvider } from '@chakra-ui/react'
 import { initializeFirebaseApp } from '@src/lib/firebase/firebase'
 import { AuthProvider } from '@src/feature/auth/provider/AuthProvider'
@@ -12,7 +12,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <AuthProvider>
         <Header />
-        <chakra.main flex={1} display={'flex'} flexDirection={'column'} minHeight={0}>
+        <chakra.main
+          flex={1}
+          display={'flex'}
+          flexDirection={'column'}
+          minHeight={0}
+        >
           <Component {...pageProps} />
         </chakra.main>
         <Footer />
